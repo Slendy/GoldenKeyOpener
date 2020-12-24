@@ -4,6 +4,8 @@ let regex = new RegExp("^[A-Za-z0-9-_=]+\.[A-Za-z0-9-_=]+\.?[A-Za-z0-9-_.+/=]*$"
 var token = '';
 var numKeys = 0;
 var username = '';
+var reroll = false;
+var keysOpened = 0;
 window.addEventListener('load', function() {
     document.getElementById("submit").addEventListener('click', function(e){
         e.preventDefault();
@@ -81,19 +83,26 @@ function getKeys(){
 }
 
 function displayResult(response){
-  var obj = JSON.parse(response);
-  if(true){
-    document.getElementById("spinResult").innerHTML = "You won ...";
-    document.getElementById("spinResult").style = "color:gold";
-  } else {
-    document.getElementById("spinResult").innerHTML = "You didn't win";
-    document.getElementById("spinResult").style = "color:red";
-  }
   numKeys--;
+  keysOpened++;
+  var obj = JSON.parse(response);
+  document.getElementById("keyStats").innerHTML = "Keys opened: " + keysOpened;
+  if(obj.isRewardReceived){
+    document.getElementById("spinResult").innerHTML = "Key " + numKeys + " - You won, (" + response + ")";
+    document.getElementById("spinResult").style = "color:gold";
+    reroll = false;
+  } else {
+    document.getElementById("spinResult").innerHTML = "Key " + numKeys + " - You didn't win (" + response + ")";
+    document.getElementById("spinResult").style = "color:red";
+    if(reroll){
+      openKey();
+    }
+  }
   updatePage();
 }
 
 function openKey(){
+    reroll = document.getElementById("reroll").checked;
     var req = new XMLHttpRequest();
       req.onreadystatechange = function() {
           if (this.readyState == 4) {
@@ -104,7 +113,7 @@ function openKey(){
             }
           }
       }
-      req.open("GET", "https://production.api.finalmouse.com/aimgods/golden-keys", true);
+      req.open("POST", "https://production.api.finalmouse.com/aimgods/golden-keys", true);
       req.setRequestHeader("authorization", token);
       req.send();
 }
