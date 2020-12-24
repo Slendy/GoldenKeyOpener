@@ -1,5 +1,4 @@
 html {
-/*  color-scheme: dark light;*/
   --text-color: #5e7072;
   --bg-color: white;
   --accent-color: #f7f7f7;
@@ -36,6 +35,35 @@ html {
 
 #opener {
   display: hidden;
+}
+
+.tutorial {
+  display: inline;
+}
+
+.tutorialHeader {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: .1em;
+}
+.tutorialBody {
+  margin-top: .1em;
+}
+
+.tutorialImage {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a {
+  color: var(--text-color);
+}
+
+.red {
+  color: var(--red);
 }
 
 .input {

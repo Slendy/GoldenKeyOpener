@@ -10,10 +10,16 @@
   <h1 class="style header"> Finalmouse Golen key opener </h1>
   <div id="bruh" class="style">
    <span class="inputHeader">Enter Authorization token</span>
-   <a class="inputHeader" href="https://google.com" target="_blank">How to get code</a>
+   <a class="inputHeader" href="/tutorial" target="_blank">How to get code</a>
    <input id="jwt" class="input""> </input>
    <button class="submit" id="submit">Submit token</button>
-   <span class="errorMsg" id="error">Invalid token</span>
+   <span class="errorMsg" id="errorToken">Invalid token</span>
+   <br>
+   <span class="inputHeader">Alternatively, you can login directly using your Aimgods credentials</span>
+   <input class="input" placeholder="Username" style="margin-bottom: .2em" id="user"></input><br>
+   <input type="password" class="input" placeholder="Password" id="password"></input>
+   <button class="submit" id="login">Login</button>
+   <span class="errorMsg" id="errorLogin">Login failed</span>
   </div>
   <div id="opener" class="style" style="display: none">
    <h2 id="authHeader" class="style"></h2>
@@ -24,6 +30,6 @@
 
 </body>
 <footer>
-<span class="style footer"> Made by slendy </span>
+<span class="style footer"> Made by slendy | Source at <a class="red" href="https://github.com/Slendy/GoldenKeyOpener">https://github.com/Slendy/GoldenKeyOpener</a> </span>
 </footer>
 </html>
