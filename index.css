@@ -1,0 +1,99 @@
+html {
+/*  color-scheme: dark light;*/
+  --text-color: #5e7072;
+  --bg-color: white;
+  --accent-color: #f7f7f7;
+  --accent2: rgba(0,0,0,.04);
+  --red: #f22613;
+}
+
+
+.header {
+  font-size: 4em;
+  color: var(--text-color);
+}
+
+.result {
+  padding-top: 1em;
+  font-style: italic;
+  color: gold;
+}
+
+.inputHeader {
+  display: block;
+  padding-bottom: 1em;
+  font-size: 1.2em;
+}
+
+.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+#opener {
+  display: hidden;
+}
+
+.input {
+  padding: .5em;
+  width: 15em;
+  height: 2.2em;
+  line-height: 50%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+}
+
+.input:focus {
+  border: 2px solid #575757;
+  outline: none;
+}
+
+.submit {
+  display: block;
+  text-align: center;
+  margin: auto;
+  margin-top: .5em;
+  width: 15em;
+  background-color: #4caf50;
+  color: white;
+  padding: .7em 0em;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.errorMsg {
+  color: var(--red);
+  display: none;
+  padding-top: 1em;
+}
+
+.submit:hover {
+  background-color: #3e8e41;
+}
+.submit:focus {
+  outline: none;
+}
+
+
+.footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  padding: .75em;
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  border-top: 1px solid var(--accent2);
+}
+
+.style {
+  font-family: "Open Sans", "Helvetica";
+  text-align: center;
+  color: var(--text-color);
+}
