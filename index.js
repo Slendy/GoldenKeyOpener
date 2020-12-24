@@ -33,9 +33,7 @@ function tryLogin(){
         if (this.readyState == 4) {
           if(this.status == 200) {
             var obj = JSON.parse(req.responseText);
-            console.log(obj);
             token = obj.tokens.id;
-            console.log(token);
             getKeys(token);
           } else {
             alertLoginFailed();
@@ -98,18 +96,24 @@ function displayResult(response){
       openKey();
     }
   }
+  if(!reroll){
+    enableButton();
+  }
   updatePage();
 }
 
 function openKey(){
+    disableButton();
     reroll = document.getElementById("reroll").checked;
     var req = new XMLHttpRequest();
       req.onreadystatechange = function() {
           if (this.readyState == 4) {
             if(this.status == 200) {
               displayResult(req.responseText);
-            } else if(this.status == 403) {
-              alert("Request failed, your web token may have expired. Refresh the page and get a fresh token")
+            } else {
+              document.getElementById("spinResult").innerHTML = "You are either out of golden keys or your authentication has expired"
+              document.getElementById("spinResult").style = "color:red";
+              reroll = false;
             }
           }
       }
@@ -118,12 +122,20 @@ function openKey(){
       req.send();
 }
 
+function disableButton(){
+  document.getElementById("spin").classList.add("disabled");
+}
+
+function enableButton(){
+  document.getElementById("spin").classList.remove("disabled");
+}
+
 function updatePage(){
   document.getElementById("bruh").style = "display: none;";
   document.getElementById("authHeader").innerHTML = "Welcome " + username;
   document.getElementById("authKeys").innerHTML = "You have " + numKeys + " keys remaining";
   if(numKeys == 0){
-    document.getElementById("spin").classList.add("disabled");
+    disableButton();
   }
   document.getElementById("opener").style = "display: block";
 }
