@@ -92,11 +92,11 @@ function displayResult(response){
   } else {
     document.getElementById("spinResult").innerHTML = "Key " + numKeys + " - You didn't win (" + response + ")";
     document.getElementById("spinResult").style = "color:red";
-    if(reroll){
+    if(reroll && numKeys > 0){
       openKey();
     }
   }
-  if(!reroll){
+  if(!reroll && numKeys > 0){
     enableButton();
   }
   updatePage();
